@@ -1,0 +1,11 @@
+{
+  "name": "@nest/shared",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Shared assets + components used by both native and site nest apps.",
+  "peerDependencies": {
+    "gsap": "*",
+    "pixi.js": "*"
+  }
+}
