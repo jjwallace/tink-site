@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@shared": fileURLToPath(new URL("../shared", import.meta.url)),
+      "@shared": fileURLToPath(new URL("./src/shared", import.meta.url)),
       // Bun's install drops several sub-directories from pixi.js (lib/assets,
       // lib/events, lib/scene/graphics, etc.), so the loose ES-module tree
       // doesn't resolve. Use the pre-bundled single-file build instead.
@@ -21,7 +21,7 @@ export default defineConfig({
     fs: {
       allow: [
         fileURLToPath(new URL("./", import.meta.url)),
-        fileURLToPath(new URL("../shared", import.meta.url)),
+        fileURLToPath(new URL("./src/shared", import.meta.url)),
       ],
     },
   },

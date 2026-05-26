@@ -22,7 +22,7 @@ export function AnchorView() {
 
     // Pinned to the far-left of the viewport — bookend off the Hero's
     // left margin, partly off-screen is fine. Clears the title text.
-    const ax = () => 10;
+    const ax = (_w: number) => 10;
     const ay = () => 90;
     const anchor = new SiteVoiceAnchor(host, {
       x: ax(w),

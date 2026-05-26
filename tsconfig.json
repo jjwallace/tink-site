@@ -17,11 +17,11 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@shared/*": ["../shared/*"],
+      "@shared/*": ["./src/shared/*"],
       "gsap": ["./node_modules/gsap/types/index.d.ts"],
       "gsap/*": ["./node_modules/gsap/types/*"],
       "pixi.js": ["./node_modules/pixi.js/dist/pixi.js.d.ts"]
     }
   },
-  "include": ["src", "vite.config.ts", "../shared/src"]
+  "include": ["src", "vite.config.ts", "./src/shared/src"]
 }
