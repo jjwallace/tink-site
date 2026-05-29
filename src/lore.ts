@@ -56,5 +56,8 @@ export const FOOTER_LINKS = [
 // VideoBlock builds the embed URL with lockdown params.
 export const VIDEO = {
   youtubeId: "4ENuzv-Xe0Q",
+  // 3-hour ambient track — start at the midpoint (1h30m) so it lands
+  // mid-drift instead of on the cold open.
+  startSeconds: 5400,
   caption: "INTERCEPTED // 11.47 GHz // 2025-03-02",
 };

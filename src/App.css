@@ -143,6 +143,21 @@ body {
   border: 0;
 }
 
+/* YouTube renders the video title in a darkened gradient bar at the top
+   that fades in on hover and pause. There is no embed param to disable
+   it — mask it with an opaque strip that matches the page background.
+   pointer-events: none so the controls underneath still respond. */
+.video-title-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: var(--bg);
+  pointer-events: none;
+  z-index: 2;
+}
+
 .video-caption {
   margin-top: 10px;
   font-family: var(--mono);
