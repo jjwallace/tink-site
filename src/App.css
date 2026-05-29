@@ -730,3 +730,92 @@ body {
 .screenshot-briefing .briefing {
   font-size: 34px !important;
 }
+
+/* v3c: bump small text in hero 3x; yellow T.I.N.K. letters unchanged */
+.screenshot-hero .acronym {
+  font-size: 66px !important;
+  letter-spacing: 0.18em !important;
+  margin-top: 44px !important;
+}
+.screenshot-hero .hero-tag {
+  font-size: 90px !important;
+  letter-spacing: 0.08em !important;
+}
+.screenshot-hero .classified {
+  font-size: 54px !important;
+  margin-top: 48px !important;
+  padding: 12px 24px !important;
+}
+
+/* v3d: correct class names for hero text bump */
+.screenshot-hero .hero-word {
+  font-size: 60px !important;
+  letter-spacing: 0.15em !important;
+}
+.screenshot-hero .dossier,
+.screenshot-hero .dossier li {
+  font-size: 80px !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1.3 !important;
+}
+.screenshot-hero .classified-tag {
+  font-size: 48px !important;
+  margin-top: 48px !important;
+  padding: 12px 28px !important;
+}
+
+/* v3e: scale hero text to fit layout — words under letters, dossier on one line each */
+.screenshot-hero .hero-word {
+  font-size: 38px !important;
+  letter-spacing: 0.12em !important;
+}
+.screenshot-hero .dossier,
+.screenshot-hero .dossier li {
+  font-size: 56px !important;
+  letter-spacing: 0.06em !important;
+  line-height: 1.3 !important;
+  white-space: nowrap;
+}
+.screenshot-hero .classified-tag {
+  font-size: 38px !important;
+  margin-top: 40px !important;
+  padding: 10px 24px !important;
+}
+
+/* v3f: hero-word must fit in column; widen the grid gap instead */
+.screenshot-hero .hero-title-stack {
+  column-gap: 240px !important;
+}
+.screenshot-hero .hero-word {
+  font-size: 36px !important;
+}
+
+/* v3g: dossier overlapping KERNEL — shrink + allow some breathing */
+.screenshot-hero .hero-grid {
+  column-gap: 100px !important;
+}
+.screenshot-hero .dossier,
+.screenshot-hero .dossier li {
+  font-size: 44px !important;
+  white-space: nowrap !important;
+}
+
+/* v3h: briefing back to readable size (was too big at 72px) */
+.screenshot-briefing .briefing {
+  font-size: 38px !important;
+  line-height: 1.55 !important;
+}
+.screenshot-briefing .briefing-tag {
+  font-size: 22px !important;
+}
+
+/* v3i: disclosure-tail smaller + more space above */
+.screenshot-disclosure .disclosure-tail {
+  font-size: 36px !important;
+  margin-top: 56px !important;
+  line-height: 1.7 !important;
+}
+.screenshot-disclosure .disclosure-tail span {
+  display: block !important;
+  margin-top: 12px !important;
+}
