@@ -1267,4 +1267,10 @@ body {
   .triad-orb--a {
     margin-left: -28px;
   }
+  /* Meteor: drop it down by ~its own height on mobile so it doesn't
+     collide with the page top and the falling glow sits below the
+     status-bar area. */
+  .tink-falling-fixed {
+    top: 120px;
+  }
 }
