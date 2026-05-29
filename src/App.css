@@ -45,7 +45,10 @@ body {
 }
 
 .stage-creature {
-  z-index: 2;
+  /* Sits ABOVE the page content (.page is z-index 10) so Tink swims on
+     top of the text as she loops around. Below the anchor host (900) so
+     it never blocks anchor interactions. */
+  z-index: 50;
 }
 
 .anchor-host {
