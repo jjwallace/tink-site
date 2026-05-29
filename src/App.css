@@ -1001,8 +1001,8 @@ body {
   margin-left: calc(clamp(220px, 22vw, 360px) / -2);
   margin-top: calc(clamp(190px, 19vw, 312px) / -2);
   animation:
-    triad-spin 180s linear infinite,
-    triad-scale 60s ease-in-out infinite;
+    triad-spin 90s linear infinite,
+    triad-scale 16s ease-in-out infinite;   /* grow in/out clearly faster than rotation */
   transform-origin: 50% 50%;
   pointer-events: none;
   z-index: 1;
@@ -1023,22 +1023,33 @@ body {
   mix-blend-mode: screen;
 }
 /* Equilateral vertices: top-apex, bottom-left, bottom-right.
-   No per-orb breath/translate — keeps the triangle perfectly rigid. */
+   No per-orb breath/translate — keeps the triangle perfectly rigid.
+   Each orb has its own pulse depth so glow intensity reads differently
+   across the three, without ever changing color. */
 .triad-orb--a {
   top: 0;
   left: 50%;
   margin-left: -35px;
-  animation: triad-pulse 22s ease-in-out infinite 0s;
+  box-shadow:
+    0 0 40px 6px rgba(255, 170, 80, 0.55),
+    0 0 90px 14px rgba(255, 130, 60, 0.35);
+  animation: triad-pulse-a 22s ease-in-out infinite 0s;
 }
 .triad-orb--b {
   bottom: 0;
   left: 0;
-  animation: triad-pulse 22s ease-in-out infinite 3.7s;
+  box-shadow:
+    0 0 28px 4px rgba(255, 170, 80, 0.4),
+    0 0 64px 10px rgba(255, 130, 60, 0.22);
+  animation: triad-pulse-b 19s ease-in-out infinite 3.7s;
 }
 .triad-orb--c {
   bottom: 0;
   right: 0;
-  animation: triad-pulse 22s ease-in-out infinite 7.3s;
+  box-shadow:
+    0 0 50px 8px rgba(255, 170, 80, 0.7),
+    0 0 110px 18px rgba(255, 130, 60, 0.45);
+  animation: triad-pulse-c 26s ease-in-out infinite 7.3s;
 }
 
 @keyframes triad-spin {
@@ -1049,9 +1060,20 @@ body {
   0%, 100% { scale: 1; }
   50%      { scale: 0.55; }
 }
-@keyframes triad-pulse {
-  0%, 100% { opacity: 0.75; }
-  50%      { opacity: 1; }
+/* Each orb gets its own pulse range. Colors are fixed (gradient + glow
+   never change hue); only opacity moves, so there's no chromatic shift
+   or flicker — just three lights breathing at different intensities. */
+@keyframes triad-pulse-a {
+  0%, 100% { opacity: 0.78; }
+  50%      { opacity: 1.0; }
+}
+@keyframes triad-pulse-b {
+  0%, 100% { opacity: 0.62; }
+  50%      { opacity: 0.92; }
+}
+@keyframes triad-pulse-c {
+  0%, 100% { opacity: 0.85; }
+  50%      { opacity: 1.0; }
 }
 .disclosure-page-back {
   position: fixed;
