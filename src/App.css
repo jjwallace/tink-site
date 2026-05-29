@@ -996,34 +996,37 @@ body {
   position: absolute;
   top: 0;
   left: 50%;
-  width: clamp(380px, 38vw, 560px);
-  height: clamp(280px, 30vh, 420px);
-  margin-left: calc(clamp(380px, 38vw, 560px) / -2);
+  width: clamp(440px, 44vw, 680px);
+  height: clamp(320px, 32vh, 460px);
+  margin-left: calc(clamp(440px, 44vw, 680px) / -2);
   margin-top: clamp(40px, 6vh, 90px);
   animation: triad-spin 140s linear infinite;
   pointer-events: none;
   z-index: 1;
 }
+/* Smaller, tighter glow — 15px blur reads as a defined orb instead of a
+   soft cloud. Core opacity bumped to keep brightness now that the haze
+   shrinks. */
 .triad-orb {
   position: absolute;
-  width: 240px;
-  height: 240px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(255, 200, 110, 0.7) 0%,
-    rgba(255, 130, 60, 0.32) 30%,
-    rgba(255, 90, 40, 0.12) 55%,
-    transparent 75%
+    rgba(255, 210, 130, 0.95) 0%,
+    rgba(255, 150, 70, 0.55) 25%,
+    rgba(255, 100, 50, 0.18) 55%,
+    transparent 78%
   );
-  filter: blur(28px);
+  filter: blur(15px);
   mix-blend-mode: screen;
   will-change: opacity, translate;
 }
 .triad-orb--a {
   top: 0;
   left: 50%;
-  margin-left: -120px;
+  margin-left: -80px;
   animation:
     triad-pulse 13s ease-in-out infinite 0s,
     triad-breath-a 26s ease-in-out infinite 0s;
@@ -1048,24 +1051,27 @@ body {
     rotate: 360deg;
   }
 }
+/* Keep all three perpetually visible — pulse stays bright (0.7 → 1).
+   With a smaller blur radius the orbs would visually disappear during a
+   deep dip, which is not the look. */
 @keyframes triad-pulse {
-  0%, 100% { opacity: 0.5; }
+  0%, 100% { opacity: 0.7; }
   50%     { opacity: 1; }
 }
-/* Each orb breathes toward the centroid and back. Offsets are tuned so
-   the three orbs converge near the center at the halfway point and
-   expand out near 0/100%. */
+/* Breath: each orb drifts toward the centroid mid-cycle and back out.
+   Wider amplitudes than the previous pass so the spacing reads as
+   triangle-distorting rather than tight-cluster. */
 @keyframes triad-breath-a {
-  0%, 100% { translate: 0 -10px; }
-  50%      { translate: 0 80px; }
+  0%, 100% { translate: 0 -30px; }
+  50%      { translate: 0 120px; }
 }
 @keyframes triad-breath-b {
-  0%, 100% { translate: -10px 6px; }
-  50%      { translate: 70px -70px; }
+  0%, 100% { translate: -40px 20px; }
+  50%      { translate: 100px -110px; }
 }
 @keyframes triad-breath-c {
-  0%, 100% { translate: 10px 6px; }
-  50%      { translate: -70px -70px; }
+  0%, 100% { translate: 40px 20px; }
+  50%      { translate: -100px -110px; }
 }
 .disclosure-page-back {
   position: fixed;
