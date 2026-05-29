@@ -1,9 +1,12 @@
-# T.I.N.K — Landing Site
+# Tink — Landing Site
 
-Marketing/landing page for **T.I.N.K** (Thought Interactive Neural Kernel).
+Marketing site for **[Tink](https://github.com/jjwallace/tink)** — voice + overlay companion for Claude Code.
+
+**Live:** [jjwallace.github.io/tink-site/](https://jjwallace.github.io/tink-site/)
 
 ```bash
-cd repos/nest/site
+git clone https://github.com/jjwallace/tink-site
+cd tink-site
 bun install
 bun run dev    # http://localhost:5181
 ```
@@ -85,4 +88,8 @@ Audio context unlocks on first pointer/key/touch (iOS/Safari requirement).
 
 ## Deploy
 
-Static build (`bun run build`) → `dist/`. Drop into Vercel/Cloudflare Pages.
+Auto-deploys to GitHub Pages via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
+on every push to `main`. To enable on a fresh repo: **Settings → Pages →
+Source: "GitHub Actions"**.
+
+Static build for self-hosting: `bun run build` → `dist/`.
