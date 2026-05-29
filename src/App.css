@@ -1001,8 +1001,8 @@ body {
   margin-left: calc(clamp(220px, 22vw, 360px) / -2);
   margin-top: calc(clamp(190px, 19vw, 312px) / -2);
   animation:
-    triad-spin 60s linear infinite,
-    triad-scale 22s ease-in-out infinite;
+    triad-spin 180s linear infinite,
+    triad-scale 60s ease-in-out infinite;
   transform-origin: 50% 50%;
   pointer-events: none;
   z-index: 1;
@@ -1028,17 +1028,17 @@ body {
   top: 0;
   left: 50%;
   margin-left: -35px;
-  animation: triad-pulse 11s ease-in-out infinite 0s;
+  animation: triad-pulse 22s ease-in-out infinite 0s;
 }
 .triad-orb--b {
   bottom: 0;
   left: 0;
-  animation: triad-pulse 11s ease-in-out infinite 3.7s;
+  animation: triad-pulse 22s ease-in-out infinite 3.7s;
 }
 .triad-orb--c {
   bottom: 0;
   right: 0;
-  animation: triad-pulse 11s ease-in-out infinite 7.3s;
+  animation: triad-pulse 22s ease-in-out infinite 7.3s;
 }
 
 @keyframes triad-spin {
@@ -1072,19 +1072,20 @@ body {
   color: var(--fg);
   border-bottom-color: var(--fg);
 }
+/* Both lines glow the same orange as the homepage "For decades they
+   denied it." treatment. A small CSS blur gives the type a soft, dreamy
+   read instead of a sharp typographic edge. */
 .disclosure-page-line {
   font-family: var(--serif);
   font-style: italic;
   font-size: clamp(28px, 4vw, 56px);
   line-height: 1.45;
-  color: var(--fg);
-  margin: 0 0 18px;
-}
-.disclosure-page-line:nth-child(3) {
   color: #ffb04a;
   text-shadow:
-    0 0 32px rgba(255, 150, 60, 0.55),
-    0 0 12px rgba(255, 170, 80, 0.4);
+    0 0 36px rgba(255, 150, 60, 0.6),
+    0 0 14px rgba(255, 170, 80, 0.45);
+  filter: blur(1.2px);
+  margin: 0 0 18px;
 }
 .disclosure-page-soon {
   margin-top: 56px;
