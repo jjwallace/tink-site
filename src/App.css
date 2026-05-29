@@ -1055,25 +1055,28 @@ body {
 @keyframes triad-spin {
   to { rotate: 360deg; }
 }
-/* Whole-triangle breath — closer/farther without distorting shape. */
+/* Whole-triangle breath — closer/farther without distorting shape.
+   Wider diameter swing: orbs travel further apart at the high end. */
 @keyframes triad-scale {
-  0%, 100% { scale: 1; }
-  50%      { scale: 0.55; }
+  0%, 100% { scale: 1.25; }
+  50%      { scale: 0.5; }
 }
-/* Each orb gets its own pulse range. Colors are fixed (gradient + glow
-   never change hue); only opacity moves, so there's no chromatic shift
-   or flicker — just three lights breathing at different intensities. */
+/* Each orb gets its own brightness pulse. The orb's physical size
+   stays fixed (no scale here) — only opacity AND filter:brightness
+   move, so the orb gets visibly hotter without growing. The blur stays
+   constant at 15px so there's no chromatic shift. Different brightness
+   ceilings per orb keep them reading differently from each other. */
 @keyframes triad-pulse-a {
-  0%, 100% { opacity: 0.78; }
-  50%      { opacity: 1.0; }
+  0%, 100% { opacity: 0.78; filter: blur(15px) brightness(0.9); }
+  50%      { opacity: 1.0;  filter: blur(15px) brightness(1.55); }
 }
 @keyframes triad-pulse-b {
-  0%, 100% { opacity: 0.62; }
-  50%      { opacity: 0.92; }
+  0%, 100% { opacity: 0.65; filter: blur(15px) brightness(0.8); }
+  50%      { opacity: 1.0;  filter: blur(15px) brightness(1.35); }
 }
 @keyframes triad-pulse-c {
-  0%, 100% { opacity: 0.85; }
-  50%      { opacity: 1.0; }
+  0%, 100% { opacity: 0.85; filter: blur(15px) brightness(1.0); }
+  50%      { opacity: 1.0;  filter: blur(15px) brightness(1.7); }
 }
 .disclosure-page-back {
   position: fixed;
