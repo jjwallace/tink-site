@@ -27,7 +27,7 @@ export function AnchorView() {
     const anchor = new SiteVoiceAnchor(host, {
       x: ax(w),
       y: ay(),
-      iconSrc: "/tink-concept-too-shiney.png",
+      iconSrc: `${import.meta.env.BASE_URL}tink-concept-too-shiney.png`,
     });
     anchor.setMotherPosProvider(() => getCreaturePosProvider()?.() ?? null);
     anchor.setContextMenuHandler((x, y) => openerRef.current?.(x, y));

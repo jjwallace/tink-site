@@ -11,7 +11,7 @@ export function Disclosure() {
         </p>
         <img
           className="tink-crashed-art"
-          src="/tink-crashed.png"
+          src={`${import.meta.env.BASE_URL}tink-crashed.png`}
           alt=""
           aria-hidden="true"
         />

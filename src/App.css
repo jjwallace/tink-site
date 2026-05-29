@@ -419,7 +419,7 @@ body {
   min-height: 240px;
   background-image:
     linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.55) 100%),
-    url("/tink-zoomed-polished.png");
+    url("/tink-site/tink-zoomed-polished.png");
   background-repeat: no-repeat, no-repeat;
   background-position: center bottom, center bottom;
   background-size: 100% 100%, 100% auto;

@@ -13,7 +13,7 @@ export function App() {
       <div className="bg-grain" aria-hidden="true" />
       <img
         className="tink-falling-fixed"
-        src="/tink-falling-small.png"
+        src={`${import.meta.env.BASE_URL}tink-falling-small.png`}
         alt=""
         aria-hidden="true"
       />
