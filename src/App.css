@@ -628,6 +628,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: none !important;   /* base .page caps at 1320px — kill it */
+  width: 100% !important;
 }
 
 /* Hero: fix cramped acronym columns at large text size */
@@ -832,4 +834,118 @@ body {
 }
 .screenshot-disclosure .disclosure {
   max-width: 2400px !important;   /* wider container so text doesn't wrap unnecessarily */
+}
+
+/* v3k: hero non-yellow text 3x + briefing 3x. Yellow T.I.N.K. letters
+   stay big. hero-grid is restacked vertically (letters on top, dossier
+   underneath) so big text doesn't collide. */
+.screenshot-hero .hero-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  row-gap: 80px !important;
+}
+.screenshot-hero .hero-title-stack {
+  column-gap: 180px !important;        /* tight enough to keep K column on screen */
+}
+/* Let the title-stack escape the .page max-width if any, but keep the
+   block (which contains classified-tag) center-aligned. */
+.screenshot-hero .page {
+  max-width: none !important;
+  width: 100% !important;
+}
+.screenshot-hero .block.hero {
+  max-width: none !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+.screenshot-hero .hero-letter {
+  font-size: 130px !important;
+}
+/* hero-word-cell must be position: relative so the absolutely-positioned
+   .hero-word centers within its own cell rather than the viewport. The
+   ghost element reserves cell width based on the longest word per
+   column, and inherits this font-size — so size cell to the word size. */
+.screenshot-hero .hero-word-cell {
+  position: relative !important;
+  font-size: 48px !important;
+  letter-spacing: 0.18em !important;
+}
+.screenshot-hero .hero-word {
+  font-size: 48px !important;
+  letter-spacing: 0.18em !important;
+}
+.screenshot-hero .dossier,
+.screenshot-hero .dossier li {
+  font-size: 100px !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.08em !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+}
+.screenshot-hero .dossier {
+  align-items: center !important;
+  gap: 12px !important;
+}
+.screenshot-hero .classified-tag {
+  font-size: 72px !important;
+  margin-top: 80px !important;
+  padding: 18px 42px !important;
+  letter-spacing: 0.18em !important;
+  white-space: nowrap !important;
+}
+
+/* Briefing: large readable, fewer wraps. Block must take full available
+   width — flex-column children otherwise hug content and the 900px cap
+   from earlier rules dominates visually. Force align-self: stretch and
+   explicit width so the paragraph fills the wide container. */
+.screenshot-briefing .briefing-block {
+  align-self: stretch !important;
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+.screenshot-briefing .briefing {
+  font-size: 78px !important;
+  line-height: 1.35 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+.screenshot-briefing .briefing-tag {
+  font-size: 50px !important;
+  letter-spacing: 0.2em !important;
+  margin-bottom: 40px !important;
+}
+
+/* v3l: disclosure each line on ONE line. Container widened, page
+   uncapped (base .page caps at 1320px), all internal max-widths killed,
+   and headlines forced to nowrap so they stay on one line. */
+.screenshot-disclosure .disclosure {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+.screenshot-disclosure .disclosure-prelude span:first-child,
+.screenshot-disclosure .disclosure-headline {
+  white-space: nowrap !important;
+  max-width: none !important;
+}
+.screenshot-disclosure .disclosure-headline {
+  margin-top: 80px !important;
+}
+.screenshot-disclosure .disclosure-tail {
+  font-size: 72px !important;
+  margin-top: 120px !important;
+  line-height: 1.6 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+.screenshot-disclosure .disclosure-tail span {
+  display: block !important;
+  margin-top: 16px !important;
+  width: 100% !important;
+  max-width: none !important;
+  white-space: nowrap !important;
 }
