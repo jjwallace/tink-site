@@ -47,8 +47,8 @@ export const ACRONYM_COLUMN_LONGEST: string[] = ACRONYM_COLUMNS.map((words) =>
 );
 
 export const FOOTER_LINKS = [
-  { label: "GitHub", href: "https://github.com/jjwallace" },
-  { label: "Download", href: "#" },
+  { label: "GitHub", href: "https://github.com/jjwallace/tink" },
+  { label: "Download", href: "https://github.com/jjwallace/tink/releases/latest" },
   { label: "Disclosure", href: "#" },
 ];
 
