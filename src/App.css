@@ -952,3 +952,63 @@ body {
   max-width: none !important;
   white-space: nowrap !important;
 }
+
+/* ── Disclosure route ────────────────────────────────────────── */
+
+.disclosure-page {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.disclosure-page-content {
+  position: relative;
+  max-width: 900px;
+  padding: 0 6vw;
+  text-align: center;
+  z-index: 10;
+}
+.disclosure-page-back {
+  position: fixed;
+  top: 32px;
+  left: 32px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 0.15s, border-color 0.15s;
+  z-index: 20;
+}
+.disclosure-page-back:hover {
+  color: var(--fg);
+  border-bottom-color: var(--fg);
+}
+.disclosure-page-line {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 56px);
+  line-height: 1.45;
+  color: var(--fg);
+  margin: 0 0 18px;
+}
+.disclosure-page-line:nth-child(3) {
+  color: #ffb04a;
+  text-shadow:
+    0 0 32px rgba(255, 150, 60, 0.55),
+    0 0 12px rgba(255, 170, 80, 0.4);
+}
+.disclosure-page-soon {
+  margin-top: 56px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  opacity: 0.6;
+}

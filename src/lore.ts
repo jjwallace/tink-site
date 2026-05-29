@@ -49,7 +49,7 @@ export const ACRONYM_COLUMN_LONGEST: string[] = ACRONYM_COLUMNS.map((words) =>
 export const FOOTER_LINKS = [
   { label: "GitHub", href: "https://github.com/jjwallace/tink" },
   { label: "Download", href: "https://github.com/jjwallace/tink/releases/latest" },
-  { label: "Disclosure", href: "#" },
+  { label: "Disclosure", href: "?page=disclosure" },
 ];
 
 // Swap to the actual transmission. YouTube ID only (no full URL) — the
