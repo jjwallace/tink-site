@@ -596,3 +596,57 @@ body {
   color: rgba(255, 255, 255, 0.9);
   pointer-events: none;
 }
+
+/* ───────────────────────────────────────────────────────────────
+   Screenshot mode (URL: ?mode=screenshot)
+
+   Bumps the global font size so the resulting PNG capture stays
+   readable when shrunk down to ~640px wide in the tink README.
+   Only affects the dedicated <ScreenshotApp/>, never the homepage.
+   ─────────────────────────────────────────────────────────────── */
+.screenshot-mode {
+  font-size: 22px;             /* base text — was 16px */
+}
+.screenshot-mode .page {
+  padding-top: 4rem;           /* compensate for removed nav header */
+}
+.screenshot-mode .block {
+  font-size: 1.15em;
+}
+.screenshot-mode h1,
+.screenshot-mode h2,
+.screenshot-mode h3 {
+  font-size: 1.25em;
+}
+
+/* ── Per-section overrides for screenshot capture ────────────── */
+
+.screenshot-page {
+  min-height: auto;
+  padding: 5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero: fix cramped acronym columns at large text size */
+.screenshot-hero .hero-title-stack {
+  column-gap: 56px !important;
+}
+.screenshot-hero .acronym {
+  font-size: 16px;
+  letter-spacing: 0.28em;
+  margin-top: 24px;
+}
+
+/* Text blocks: limit width so lines don't go ultra-wide */
+.screenshot-disclosure .block,
+.screenshot-briefing .block {
+  max-width: 900px;
+}
+
+/* Footer screenshot — give the sphere room and let footer breathe */
+.screenshot-footer .page {
+  min-height: 80vh;
+}
