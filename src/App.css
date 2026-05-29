@@ -186,8 +186,8 @@ body {
 .hero-title-stack {
   display: grid;
   grid-template-columns: repeat(4, auto);
-  column-gap: 14px;
-  row-gap: 6px;
+  column-gap: clamp(28px, 4vw, 72px);
+  row-gap: 10px;
   align-items: end;
   justify-items: center;
 }
