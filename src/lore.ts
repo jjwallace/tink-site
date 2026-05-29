@@ -55,6 +55,6 @@ export const FOOTER_LINKS = [
 // Swap to the actual transmission. YouTube ID only (no full URL) — the
 // VideoBlock builds the embed URL with lockdown params.
 export const VIDEO = {
-  youtubeId: "dQw4w9WgXcQ",
+  youtubeId: "4ENuzv-Xe0Q",
   caption: "INTERCEPTED // 11.47 GHz // 2025-03-02",
 };
