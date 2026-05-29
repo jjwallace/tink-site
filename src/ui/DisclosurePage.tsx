@@ -10,10 +10,15 @@ export function DisclosurePage() {
   return (
     <div className="disclosure-page">
       <div className="bg-grain" aria-hidden="true" />
+      <a href={base} className="disclosure-page-back" aria-label="Back to home">
+        ← back
+      </a>
+      <div className="disclosure-triad" aria-hidden="true">
+        <div className="triad-orb triad-orb--a" />
+        <div className="triad-orb triad-orb--b" />
+        <div className="triad-orb triad-orb--c" />
+      </div>
       <main className="disclosure-page-content">
-        <a href={base} className="disclosure-page-back" aria-label="Back to home">
-          ← back
-        </a>
         <p className="disclosure-page-line">If only the youth knew.</p>
         <p className="disclosure-page-line">If only the elderly could.</p>
         <p className="disclosure-page-soon">coming soon</p>

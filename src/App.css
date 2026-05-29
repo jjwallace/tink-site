@@ -974,16 +974,98 @@ body {
   position: fixed;
   inset: 0;
   background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
 }
+/* Statement sits in the bottom 2/3 — top: 33% pushes it past the triad. */
 .disclosure-page-content {
-  position: relative;
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
   max-width: 900px;
   padding: 0 6vw;
   text-align: center;
   z-index: 10;
+}
+
+/* Three glowing radial gradients arranged in a triangle. The wrapper
+   slow-spins; each orb has its own slow pulse + slow inward/outward
+   breath so the triangle never sits still and never feels mechanical. */
+.disclosure-triad {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: clamp(380px, 38vw, 560px);
+  height: clamp(280px, 30vh, 420px);
+  margin-left: calc(clamp(380px, 38vw, 560px) / -2);
+  margin-top: clamp(40px, 6vh, 90px);
+  animation: triad-spin 140s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+.triad-orb {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 200, 110, 0.7) 0%,
+    rgba(255, 130, 60, 0.32) 30%,
+    rgba(255, 90, 40, 0.12) 55%,
+    transparent 75%
+  );
+  filter: blur(28px);
+  mix-blend-mode: screen;
+  will-change: opacity, translate;
+}
+.triad-orb--a {
+  top: 0;
+  left: 50%;
+  margin-left: -120px;
+  animation:
+    triad-pulse 13s ease-in-out infinite 0s,
+    triad-breath-a 26s ease-in-out infinite 0s;
+}
+.triad-orb--b {
+  bottom: 0;
+  left: 0;
+  animation:
+    triad-pulse 13s ease-in-out infinite 4.3s,
+    triad-breath-b 26s ease-in-out infinite 0s;
+}
+.triad-orb--c {
+  bottom: 0;
+  right: 0;
+  animation:
+    triad-pulse 13s ease-in-out infinite 8.6s,
+    triad-breath-c 26s ease-in-out infinite 0s;
+}
+
+@keyframes triad-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+@keyframes triad-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%     { opacity: 1; }
+}
+/* Each orb breathes toward the centroid and back. Offsets are tuned so
+   the three orbs converge near the center at the halfway point and
+   expand out near 0/100%. */
+@keyframes triad-breath-a {
+  0%, 100% { translate: 0 -10px; }
+  50%      { translate: 0 80px; }
+}
+@keyframes triad-breath-b {
+  0%, 100% { translate: -10px 6px; }
+  50%      { translate: 70px -70px; }
+}
+@keyframes triad-breath-c {
+  0%, 100% { translate: 10px 6px; }
+  50%      { translate: -70px -70px; }
 }
 .disclosure-page-back {
   position: fixed;
