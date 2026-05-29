@@ -819,3 +819,17 @@ body {
   display: block !important;
   margin-top: 12px !important;
 }
+
+/* v3j: massive disclosure prelude + headline */
+.screenshot-disclosure .disclosure-prelude span:first-child {
+  font-size: 180px !important;
+  line-height: 1.1 !important;
+}
+.screenshot-disclosure .disclosure-headline {
+  font-size: 150px !important;
+  line-height: 1.2 !important;
+  margin-top: 60px !important;
+}
+.screenshot-disclosure .disclosure {
+  max-width: 2400px !important;   /* wider container so text doesn't wrap unnecessarily */
+}
