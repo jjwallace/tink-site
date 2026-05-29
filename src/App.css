@@ -650,3 +650,83 @@ body {
 .screenshot-footer .page {
   min-height: 80vh;
 }
+
+/* ── Screenshot-mode v2: bigger text edge-to-edge ────────────── */
+
+/* Hero — spread the T. I. N. K. row across the full width */
+.screenshot-hero .hero-title-stack {
+  column-gap: 140px !important;
+  max-width: none;
+}
+.screenshot-hero .hero-letter {
+  font-size: 110px !important;
+}
+.screenshot-hero .acronym {
+  font-size: 22px !important;
+  letter-spacing: 0.3em !important;
+  margin-top: 32px !important;
+}
+.screenshot-hero .hero-tag {
+  font-size: 30px !important;
+  letter-spacing: 0.1em !important;
+}
+.screenshot-hero .classified {
+  font-size: 18px !important;
+  margin-top: 32px !important;
+}
+
+/* Disclosure — bigger body + headline */
+.screenshot-disclosure .disclosure {
+  max-width: 1100px !important;
+}
+.screenshot-disclosure .disclosure-prelude {
+  font-size: 26px !important;
+  line-height: 1.7 !important;
+}
+.screenshot-disclosure .disclosure-prelude span:first-child {
+  font-size: 52px !important;
+}
+.screenshot-disclosure .disclosure-headline {
+  font-size: 44px !important;
+  line-height: 1.4 !important;
+}
+.screenshot-disclosure .disclosure-tail {
+  font-size: 24px !important;
+  line-height: 1.7 !important;
+}
+
+/* Briefing — bigger body */
+.screenshot-briefing .briefing-block {
+  max-width: 1100px !important;
+}
+.screenshot-briefing .briefing {
+  font-size: 28px !important;
+  line-height: 1.6 !important;
+}
+.screenshot-briefing .briefing-tag {
+  font-size: 18px !important;
+}
+
+/* Wider text containers — fill the screenshot frame more aggressively */
+.screenshot-disclosure .disclosure {
+  max-width: 1500px !important;
+}
+.screenshot-disclosure .disclosure-prelude {
+  font-size: 32px !important;
+}
+.screenshot-disclosure .disclosure-prelude span:first-child {
+  font-size: 64px !important;
+}
+.screenshot-disclosure .disclosure-headline {
+  font-size: 56px !important;
+}
+.screenshot-disclosure .disclosure-tail {
+  font-size: 30px !important;
+}
+
+.screenshot-briefing .briefing-block {
+  max-width: 1500px !important;
+}
+.screenshot-briefing .briefing {
+  font-size: 34px !important;
+}
