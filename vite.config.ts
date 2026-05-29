@@ -3,6 +3,9 @@ import react from "@vitejs/plugin-react";
 import { fileURLToPath } from "node:url";
 
 export default defineConfig({
+  // GitHub Pages serves this at jjwallace.github.io/tink-site/ — the
+  // subpath must be reflected in the base URL so asset paths resolve.
+  base: "/tink-site/",
   plugins: [react()],
   resolve: {
     alias: {
