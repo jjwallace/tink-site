@@ -1268,9 +1268,10 @@ body {
     margin-left: -28px;
   }
   /* Meteor: drop it down by ~its own height on mobile so it doesn't
-     collide with the page top and the falling glow sits below the
-     status-bar area. */
+     collide with the page top, AND shift it ~1/4 of its width off the
+     right edge so it reads as falling INTO frame rather than parked. */
   .tink-falling-fixed {
     top: 120px;
+    transform: translateX(25%);
   }
 }
