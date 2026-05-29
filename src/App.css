@@ -1000,9 +1000,10 @@ body {
   height: clamp(190px, 19vw, 312px);   /* equilateral: h ≈ w * √3/2 */
   margin-left: calc(clamp(220px, 22vw, 360px) / -2);
   margin-top: calc(clamp(190px, 19vw, 312px) / -2);
-  animation:
-    triad-spin 90s linear infinite,
-    triad-scale 16s ease-in-out infinite;   /* grow in/out clearly faster than rotation */
+  /* Single rotation on the parent. No scale here — scaling the parent
+     would also scale the orbs, and the user wants the orbs themselves to
+     stay the same size. Expansion is done per-orb (radial translate). */
+  animation: triad-spin 22s linear infinite;
   transform-origin: 50% 50%;
   pointer-events: none;
   z-index: 1;
@@ -1026,6 +1027,13 @@ body {
    No per-orb breath/translate — keeps the triangle perfectly rigid.
    Each orb has its own pulse depth so glow intensity reads differently
    across the three, without ever changing color. */
+/* Per-orb animation stack:
+   - triad-radial-X: radial translate AND brightness lift, peaking
+     together at 50% — so each orb is brightest when it's nearest the
+     centroid ("brighter when closer").
+   - triad-fade-X: a separate, slower opacity dip + recover with off-
+     beat keyframe stops, so the three orbs randomly fade in and out at
+     visibly different moments. */
 .triad-orb--a {
   top: 0;
   left: 50%;
@@ -1033,7 +1041,9 @@ body {
   box-shadow:
     0 0 40px 6px rgba(255, 170, 80, 0.55),
     0 0 90px 14px rgba(255, 130, 60, 0.35);
-  animation: triad-pulse-a 22s ease-in-out infinite 0s;
+  animation:
+    triad-radial-a 11s ease-in-out infinite,
+    triad-fade-a 17s ease-in-out infinite;
 }
 .triad-orb--b {
   bottom: 0;
@@ -1041,7 +1051,9 @@ body {
   box-shadow:
     0 0 28px 4px rgba(255, 170, 80, 0.4),
     0 0 64px 10px rgba(255, 130, 60, 0.22);
-  animation: triad-pulse-b 19s ease-in-out infinite 3.7s;
+  animation:
+    triad-radial-b 9s ease-in-out infinite,
+    triad-fade-b 23s ease-in-out infinite;
 }
 .triad-orb--c {
   bottom: 0;
@@ -1049,34 +1061,56 @@ body {
   box-shadow:
     0 0 50px 8px rgba(255, 170, 80, 0.7),
     0 0 110px 18px rgba(255, 130, 60, 0.45);
-  animation: triad-pulse-c 26s ease-in-out infinite 7.3s;
+  animation:
+    triad-radial-c 13s ease-in-out infinite,
+    triad-fade-c 19s ease-in-out infinite;
 }
 
 @keyframes triad-spin {
   to { rotate: 360deg; }
 }
-/* Whole-triangle breath — closer/farther without distorting shape.
-   Wider diameter swing: orbs travel further apart at the high end. */
-@keyframes triad-scale {
-  0%, 100% { scale: 1.25; }
-  50%      { scale: 0.5; }
+/* Radial + brightness peaks at 50% — orb sits closest to the centroid
+   AND is brightest then. Out at 0/100%. Each orb's translate vector
+   points along its own radial out direction (top-apex straight up, two
+   bases at ±30° below horizontal). The orb's physical size stays
+   fixed — `translate` moves the box; nothing scales. */
+@keyframes triad-radial-a {
+  0%, 100% { translate: 0 -70px; filter: blur(15px) brightness(0.85); }
+  50%      { translate: 0 30px;  filter: blur(15px) brightness(1.7);  }
 }
-/* Each orb gets its own brightness pulse. The orb's physical size
-   stays fixed (no scale here) — only opacity AND filter:brightness
-   move, so the orb gets visibly hotter without growing. The blur stays
-   constant at 15px so there's no chromatic shift. Different brightness
-   ceilings per orb keep them reading differently from each other. */
-@keyframes triad-pulse-a {
-  0%, 100% { opacity: 0.78; filter: blur(15px) brightness(0.9); }
-  50%      { opacity: 1.0;  filter: blur(15px) brightness(1.55); }
+@keyframes triad-radial-b {
+  0%, 100% { translate: -60px 34px; filter: blur(15px) brightness(0.8); }
+  50%      { translate: 26px -16px; filter: blur(15px) brightness(1.55); }
 }
-@keyframes triad-pulse-b {
-  0%, 100% { opacity: 0.65; filter: blur(15px) brightness(0.8); }
-  50%      { opacity: 1.0;  filter: blur(15px) brightness(1.35); }
+@keyframes triad-radial-c {
+  0%, 100% { translate: 60px 34px;  filter: blur(15px) brightness(0.95); }
+  50%      { translate: -26px -16px; filter: blur(15px) brightness(1.85); }
 }
-@keyframes triad-pulse-c {
-  0%, 100% { opacity: 0.85; filter: blur(15px) brightness(1.0); }
-  50%      { opacity: 1.0;  filter: blur(15px) brightness(1.7); }
+
+/* Random-looking fade in/out. Off-beat keyframe stops + irrational-ish
+   durations (17, 23, 19) so the three orbs dip at visibly different
+   moments and the cycle never feels patterned. Min opacity is moderate
+   (0.4) so an orb softly fades but never fully disappears. */
+@keyframes triad-fade-a {
+  0%   { opacity: 1; }
+  37%  { opacity: 0.45; }
+  62%  { opacity: 1; }
+  85%  { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+@keyframes triad-fade-b {
+  0%   { opacity: 0.9; }
+  22%  { opacity: 0.4; }
+  48%  { opacity: 1; }
+  73%  { opacity: 0.55; }
+  100% { opacity: 0.9; }
+}
+@keyframes triad-fade-c {
+  0%   { opacity: 1; }
+  28%  { opacity: 0.6; }
+  55%  { opacity: 0.4; }
+  78%  { opacity: 1; }
+  100% { opacity: 1; }
 }
 .disclosure-page-back {
   position: fixed;
@@ -1120,4 +1154,117 @@ body {
   text-transform: uppercase;
   color: var(--fg-dim);
   opacity: 0.6;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────
+   Most of the type and spacing already uses clamp()/vw so it scales,
+   but the desktop-only layouts (hero letters + dossier side-by-side,
+   wide footer nav, large triad) need targeted overrides on narrow
+   viewports. Two breakpoints: tablet (≤900px) and mobile (≤520px). */
+
+@media (max-width: 900px) {
+  /* Hero: stack the letter row above the dossier, both centered. */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+    justify-items: center;
+    text-align: center;
+  }
+  .hero-title-stack {
+    column-gap: clamp(18px, 6vw, 56px);
+  }
+  .dossier {
+    text-align: center;
+    align-items: center;
+    font-size: clamp(13px, 2.2vw, 16px);
+  }
+  /* Footer: tighter nav gap, give the brand room to wrap. */
+  .footer nav {
+    gap: 18px;
+    font-size: 11px;
+  }
+  .footer-content {
+    gap: 18px;
+    padding-bottom: 16px;
+  }
+  /* Disclosure-page triad shrinks proportionally on narrower screens. */
+  .disclosure-triad {
+    width: clamp(180px, 50vw, 320px);
+    height: clamp(156px, 43vw, 277px);
+    margin-left: calc(clamp(180px, 50vw, 320px) / -2);
+    margin-top: calc(clamp(156px, 43vw, 277px) / -2);
+  }
+}
+
+@media (max-width: 520px) {
+  /* Mobile: looser line-height on hero words, smaller download buttons,
+     a touch less footer breathing. */
+  .page {
+    padding: 32px 5vw 0;
+    gap: 22px;
+  }
+  .hero-word-cell {
+    font-size: 9px;
+  }
+  .acronym {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+  }
+  .classified-tag {
+    font-size: 10px;
+    padding: 5px 8px;
+    letter-spacing: 0.22em;
+  }
+  .video-caption {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+  }
+  .download-block {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 48px;
+  }
+  .download-btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 12px;
+  }
+  .footer nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 16px;
+  }
+  .footer .brand {
+    font-size: 11px;
+  }
+  .footer .brand small {
+    font-size: 9px;
+  }
+  /* Disclosure: smaller orange lines, tighter back link. */
+  .disclosure-page-line {
+    font-size: clamp(22px, 7vw, 36px);
+    margin-bottom: 14px;
+  }
+  .disclosure-page-back {
+    top: 18px;
+    left: 18px;
+    font-size: 11px;
+  }
+  /* Triad: smaller still on mobile so it doesn't dominate. */
+  .disclosure-triad {
+    width: clamp(160px, 58vw, 240px);
+    height: clamp(139px, 50vw, 208px);
+    margin-left: calc(clamp(160px, 58vw, 240px) / -2);
+    margin-top: calc(clamp(139px, 50vw, 208px) / -2);
+  }
+  .triad-orb {
+    width: 56px;
+    height: 56px;
+    margin: 0;
+  }
+  .triad-orb--a {
+    margin-left: -28px;
+  }
 }
