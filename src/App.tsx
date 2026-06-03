@@ -5,6 +5,7 @@ import { VideoBlock } from "./ui/VideoBlock";
 import { Disclosure } from "./ui/Disclosure";
 import { Briefing } from "./ui/Briefing";
 import { DownloadCTA } from "./ui/DownloadCTA";
+import { InstallGuide } from "./ui/InstallGuide";
 import { Footer } from "./ui/Footer";
 
 export function App() {
@@ -25,6 +26,7 @@ export function App() {
         <Disclosure />
         <Briefing />
         <DownloadCTA />
+        <InstallGuide />
       </main>
       <Footer />
     </>
