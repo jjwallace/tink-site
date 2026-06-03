@@ -44,7 +44,7 @@ const DOWNLOAD_GLYPH = (
   </svg>
 );
 
-const RELEASE_URL = "https://github.com/jjwallace/tink/releases/latest/download/Tink_0.2.0_aarch64.dmg";
+const RELEASE_URL = "https://github.com/jjwallace/tink/releases/latest";
 
 export function DownloadCTA() {
   return (
@@ -53,7 +53,7 @@ export function DownloadCTA() {
         <span className="download-glyph" aria-hidden="true">
           {DOWNLOAD_GLYPH}
         </span>
-        <span>Download for Mac</span>
+        <span>Download — macOS</span>
         <span className="download-platform" aria-label="macOS">{APPLE}</span>
       </a>
 
