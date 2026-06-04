@@ -48,6 +48,12 @@ export function VideoBlock() {
             onClick={() => setPlaying(true)}
             aria-label="Play transmission"
           >
+            <img
+              className="video-poster-thumb"
+              src={`https://img.youtube.com/vi/${VIDEO.youtubeId}/maxresdefault.jpg`}
+              alt=""
+              aria-hidden="true"
+            />
             <span className="video-play-icon" aria-hidden="true">
               <svg viewBox="0 0 28 28" width="40" height="40">
                 <polygon points="9,6 23,14 9,22" fill="currentColor" />

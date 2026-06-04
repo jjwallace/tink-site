@@ -112,12 +112,22 @@ body {
   font-family: var(--mono);
 }
 
+.video-poster-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+
 .video-poster:hover .video-play-icon {
   border-color: rgba(255, 255, 255, 0.85);
   transform: scale(1.05);
 }
 
 .video-play-icon {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -130,6 +140,7 @@ body {
 }
 
 .video-play-label {
+  position: relative;
   font-size: 11px;
   letter-spacing: 0.32em;
   color: var(--fg-dim);
